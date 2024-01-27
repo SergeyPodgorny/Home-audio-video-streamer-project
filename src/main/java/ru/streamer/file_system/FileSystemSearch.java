@@ -4,7 +4,7 @@ import java.util.Set;
 
 public interface FileSystemSearch {
 
-    Set<String> searchFiles(String dir, int depth);
+    Set<String> searchFiles();
 
 
 }
