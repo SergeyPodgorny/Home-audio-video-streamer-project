@@ -22,7 +22,7 @@ public class StreamFileSystemSearch implements FileSystemSearch {
     @Override
     public Set<String> searchFiles() {
         log.info("Current jar dir: "+ dir);
-        final int depth = 1;
+        final int depth = 10;
         try(Stream<Path> stream = Files.walk(Paths.get(dir), depth)){
             return stream.filter(file -> !Files.isDirectory(file))
                     .map(Path::getFileName)
