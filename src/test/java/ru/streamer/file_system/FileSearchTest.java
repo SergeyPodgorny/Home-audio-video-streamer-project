@@ -17,7 +17,8 @@ public class FileSearchTest {
 
 
     @Test
-    void searchFiles_shouldNotReturnNull(){
+    void searchFiles_shouldNotReturnNull() {
+        searcher.searchFileRoutes().entrySet().stream().forEach(System.out::println);
         assertThat(searcher.searchFileRoutes()).isNotNull();
     }
 

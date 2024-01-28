@@ -1,10 +1,10 @@
 package ru.streamer.file_system;
 
-import java.util.Set;
+import java.util.Map;
 
 public interface FileSystemSearch {
 
-    Set<String> searchFileRoutes();
+    Map<String, String> searchFileRoutes();
 
 
 }

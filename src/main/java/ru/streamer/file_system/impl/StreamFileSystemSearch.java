@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
 import ru.streamer.exceptions.ReadFileSystemException;
 import ru.streamer.file_system.FileSystemSearch;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Set;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 @Component
@@ -21,16 +22,18 @@ public class StreamFileSystemSearch implements FileSystemSearch {
 
     @PostConstruct
     @Override
-    public Set<String> searchFileRoutes() {
+    public Map<String, String> searchFileRoutes() {
         log.info("Current jar dir: "+ dir);
         final int depth = 10;
         try(Stream<Path> stream = Files.walk(Paths.get(dir), depth)){
             return stream.filter(file -> !Files.isDirectory(file))
-                    .map(Path::toAbsolutePath)
-                    .map(Path::toString)
-                    .collect(Collectors.toSet());
+                    .map(Path::toFile)
+                    .collect(Collectors.toMap(
+                            File::getName,
+                            File::getAbsolutePath,
+                            (s1,s2)-> s1+","+s2));
         } catch (IOException e) {
-            throw new ReadFileSystemException("Failed to read file system");
+            throw new ReadFileSystemException(e);
         }
     }
 }
