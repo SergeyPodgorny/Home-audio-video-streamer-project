@@ -3,6 +3,7 @@ package ru.streamer.file_system.impl;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import ru.streamer.exceptions.ReadFileSystemException;
 import ru.streamer.file_system.FileSystemSearch;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class StreamFileSystemSearch implements FileSystemSearch {
                     .map(Path::toString)
                     .collect(Collectors.toSet());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ReadFileSystemException("Failed to read file system");
         }
     }
 }
