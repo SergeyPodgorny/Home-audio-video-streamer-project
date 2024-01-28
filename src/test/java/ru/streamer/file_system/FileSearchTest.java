@@ -18,7 +18,7 @@ public class FileSearchTest {
 
     @Test
     void searchFiles_shouldNotReturnNull(){
-        assertThat(searcher.searchFiles()).isNotNull();
+        assertThat(searcher.searchFileRoutes()).isNotNull();
     }
 
 

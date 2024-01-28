@@ -20,12 +20,12 @@ public class StreamFileSystemSearch implements FileSystemSearch {
 
     @PostConstruct
     @Override
-    public Set<String> searchFiles() {
+    public Set<String> searchFileRoutes() {
         log.info("Current jar dir: "+ dir);
         final int depth = 10;
         try(Stream<Path> stream = Files.walk(Paths.get(dir), depth)){
             return stream.filter(file -> !Files.isDirectory(file))
-                    .map(Path::getFileName)
+                    .map(Path::toAbsolutePath)
                     .map(Path::toString)
                     .collect(Collectors.toSet());
         } catch (IOException e) {
