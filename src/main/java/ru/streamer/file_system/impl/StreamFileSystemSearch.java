@@ -14,17 +14,19 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static ru.streamer.constants.CurrentJarFolderRoute.CURRENT_DIRECTORY;
+
 @Component
 @Slf4j
 public class StreamFileSystemSearch implements FileSystemSearch {
 
-    private final String startDirectory = System.getProperty("user.dir");
 
     @PostConstruct
     @Override
     public Map<String, String> searchFileRoutes() {
-        log.info("Current jar dir: "+ startDirectory);
-        try(Stream<Path> stream = Files.walk(Paths.get(startDirectory), Integer.MAX_VALUE)){
+        log.info("Current jar dir: "+ CURRENT_DIRECTORY);
+        try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             return stream.filter(file -> !Files.isDirectory(file))
                     .map(Path::toFile)
                     .collect(Collectors.toMap(
