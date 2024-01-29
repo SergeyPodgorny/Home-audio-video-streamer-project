@@ -25,7 +25,7 @@ public class StreamFileSystemSearch implements FileSystemSearch {
     @PostConstruct
     @Override
     public Map<String, String> searchFileRoutes() {
-        log.info("Current jar location: "+ CURRENT_DIRECTORY);
+        log.info("Current file system scan start location: "+ CURRENT_DIRECTORY);
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             return stream.filter(file -> !Files.isDirectory(file))
                     .map(Path::toFile)
