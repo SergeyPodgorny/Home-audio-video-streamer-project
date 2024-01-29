@@ -12,9 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 public class FileSearchTest {
 
-    @Autowired
+
     FileSystemSearch searcher;
 
+    @Autowired
+    public FileSearchTest(FileSystemSearch searcher) {
+        this.searcher = searcher;
+    }
 
     @Test
     void searchFiles_shouldNotReturnNull() {
