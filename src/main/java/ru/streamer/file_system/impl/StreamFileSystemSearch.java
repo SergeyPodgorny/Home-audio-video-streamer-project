@@ -18,14 +18,13 @@ import java.util.stream.Stream;
 @Slf4j
 public class StreamFileSystemSearch implements FileSystemSearch {
 
-    private final String dir = System.getProperty("user.dir");
+    private final String startDirectory = System.getProperty("user.dir");
 
     @PostConstruct
     @Override
     public Map<String, String> searchFileRoutes() {
-        log.info("Current jar dir: "+ dir);
-        final int searchDepth = 10;
-        try(Stream<Path> stream = Files.walk(Paths.get(dir), searchDepth)){
+        log.info("Current jar dir: "+ startDirectory);
+        try(Stream<Path> stream = Files.walk(Paths.get(startDirectory), Integer.MAX_VALUE)){
             return stream.filter(file -> !Files.isDirectory(file))
                     .map(Path::toFile)
                     .collect(Collectors.toMap(
