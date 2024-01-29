@@ -7,7 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 
-import static ru.streamer.constants.CurrentJarFolderRoute.CURRENT_DIRECTORY;
+import static ru.streamer.constants.PathConstants.CURRENT_DIRECTORY;
+import static ru.streamer.constants.PathConstants.CURRENT_PATH;
 
 @Component
 @Slf4j
@@ -15,7 +16,7 @@ public class PlayListPresenceCheck implements PlayListPresence {
 
     @Override
     public boolean isPlayListPresent() {
-        if(Files.exists(Path.of(CURRENT_DIRECTORY+"/playlist"))){
+        if(Files.exists(CURRENT_PATH)){
             log.info("Play list found");
             return true;
         } else {

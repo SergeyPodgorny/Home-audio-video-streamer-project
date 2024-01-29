@@ -12,18 +12,14 @@ import ru.streamer.file_system.impl.PlayListPresenceCheck;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static ru.streamer.constants.CurrentJarFolderRoute.CURRENT_DIRECTORY;
+import static ru.streamer.constants.PathConstants.CURRENT_PATH;
 
 @SpringBootTest(classes = StreamerApplication.class)
 public class PlayListPresenceTest {
 
     private final PlayListPresenceCheck playListChecker;
-
-    private final Path newPlayListPath = Paths.get(CURRENT_DIRECTORY+"/playlist");
 
     @Autowired
     public PlayListPresenceTest(PlayListPresenceCheck playListChecker) {
@@ -39,12 +35,12 @@ public class PlayListPresenceTest {
 
     @BeforeEach
     void createPlayListFile() throws IOException {
-        Files.createFile(newPlayListPath);
+        Files.createFile(CURRENT_PATH);
     }
 
     @AfterEach
     void afterTestCleanUp() throws IOException {
-        Files.deleteIfExists(newPlayListPath);
+        Files.deleteIfExists(CURRENT_PATH);
     }
 
 

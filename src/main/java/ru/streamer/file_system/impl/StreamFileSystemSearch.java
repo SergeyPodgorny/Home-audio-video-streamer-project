@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static ru.streamer.constants.CurrentJarFolderRoute.CURRENT_DIRECTORY;
+import static ru.streamer.constants.PathConstants.CURRENT_DIRECTORY;
 
 @Component
 @Slf4j
