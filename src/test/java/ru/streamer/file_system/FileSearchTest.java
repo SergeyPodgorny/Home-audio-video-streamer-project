@@ -13,17 +13,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FileSearchTest {
 
 
-    FileSystemSearch searcher;
+    PlayList searcher;
 
     @Autowired
-    public FileSearchTest(FileSystemSearch searcher) {
+    public FileSearchTest(PlayList searcher) {
         this.searcher = searcher;
     }
 
     @Test
     void searchFiles_shouldNotReturnNull() {
-        searcher.searchFileRoutes().entrySet().stream().forEach(System.out::println);
-        assertThat(searcher.searchFileRoutes()).isNotNull();
+        searcher.createPlayList().entrySet().stream().forEach(System.out::println);
+        assertThat(searcher.createPlayList()).isNotNull();
     }
 
 

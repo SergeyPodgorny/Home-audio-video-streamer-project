@@ -4,6 +4,7 @@ import java.util.Map;
 
 public interface PlayList {
 
-    Map<String,String> getPlayList();
+    Map<String, String> createPlayList();
+
 
 }

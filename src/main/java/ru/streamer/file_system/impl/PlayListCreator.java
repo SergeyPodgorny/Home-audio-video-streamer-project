@@ -4,7 +4,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.streamer.exceptions.ReadFileSystemException;
-import ru.streamer.file_system.FileSystemSearch;
+import ru.streamer.file_system.PlayList;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,12 +19,12 @@ import static ru.streamer.constants.PathConstants.CURRENT_DIRECTORY;
 
 @Component
 @Slf4j
-public class StreamFileSystemSearch implements FileSystemSearch {
+public class PlayListCreator implements PlayList {
 
 
     @PostConstruct
     @Override
-    public Map<String, String> searchFileRoutes() {
+    public Map<String, String> createPlayList() {
         log.info("Current file system scan start location: "+ CURRENT_DIRECTORY);
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             return stream.filter(file -> !Files.isDirectory(file))
