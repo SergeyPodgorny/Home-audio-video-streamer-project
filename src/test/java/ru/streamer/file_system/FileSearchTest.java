@@ -13,10 +13,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FileSearchTest {
 
 
-    PlayList searcher;
+    PlayListCreation searcher;
 
     @Autowired
-    public FileSearchTest(PlayList searcher) {
+    public FileSearchTest(PlayListCreation searcher) {
         this.searcher = searcher;
     }
 

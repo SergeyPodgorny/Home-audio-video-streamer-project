@@ -4,7 +4,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.streamer.exceptions.ReadFileSystemException;
-import ru.streamer.file_system.PlayList;
+import ru.streamer.file_system.PlayListCreation;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import static ru.streamer.constants.PathConstants.CURRENT_DIRECTORY;
 
 @Component
 @Slf4j
-public class PlayListCreator implements PlayList {
+public class PlayListCreator implements PlayListCreation {
 
 
     @PostConstruct
