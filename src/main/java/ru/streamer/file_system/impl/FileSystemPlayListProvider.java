@@ -18,9 +18,9 @@ import static ru.streamer.constants.PathConstants.CURRENT_DIRECTORY;
 public class FileSystemPlayListProvider implements PlayListProvider {
 
 
-    private PlayListCreation playListCreation;
+    private final PlayListCreation playListCreation;
 
-    private PlayListPresence playListPresence;
+    private final PlayListPresence playListPresence;
 
     @Autowired
     public FileSystemPlayListProvider(PlayListCreation playListCreation, PlayListPresence playListPresence) {
