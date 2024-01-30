@@ -22,10 +22,8 @@ import static ru.streamer.constants.PathConstants.CURRENT_DIRECTORY;
 public class PlayListCreator implements PlayListCreation {
 
 
-    @PostConstruct
     @Override
     public Map<String, String> createPlayList() {
-        log.info("Current file system scan start location: "+ CURRENT_DIRECTORY);
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             return stream.filter(file -> !Files.isDirectory(file))
                     .map(Path::toFile)

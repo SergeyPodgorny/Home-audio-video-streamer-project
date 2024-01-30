@@ -15,10 +15,8 @@ public class PlayListPresenceCheck implements PlayListPresence {
     @Override
     public boolean isPlayListPresent() {
         if(Files.exists(CURRENT_PATH)){
-            log.info("Play list found");
             return true;
         } else {
-            log.info("Play list not found");
             return false;
         }
     }
