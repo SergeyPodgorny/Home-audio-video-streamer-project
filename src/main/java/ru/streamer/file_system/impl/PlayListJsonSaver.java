@@ -26,7 +26,7 @@ public class PlayListJsonSaver implements JsonManager {
 
     @Override
     public void savePlayList(Map<String, String> playList) throws IOException {
-        File tempFile = File.createTempFile("student", "");
+        File tempFile = File.createTempFile("playlist", "");
         try (FileOutputStream fileOutput = new FileOutputStream(tempFile)) {
             objectMapper.writeValue(fileOutput, playList);
         }
