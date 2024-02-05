@@ -1,6 +1,7 @@
 package ru.streamer.file_system;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,18 +14,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FileSearchTest {
 
 
-    PlayListCreation searcher;
+    PlayListInitialization searcher;
 
     @Autowired
-    public FileSearchTest(PlayListCreation searcher) {
+    public FileSearchTest(PlayListInitialization searcher) {
         this.searcher = searcher;
     }
 
     @Test
     void searchFiles_shouldNotReturnNull() {
-        searcher.createPlayList().entrySet().stream().forEach(System.out::println);
-        assertThat(searcher.createPlayList()).isNotNull();
+        searcher.getPlayList().entrySet().forEach(System.out::println);
+        assertThat(searcher.getPlayList()).isNotNull();
     }
 
+    @BeforeEach
+    void testSetup(){
+        searcher.init();
+    }
 
 }
