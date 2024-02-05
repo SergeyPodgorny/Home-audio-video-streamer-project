@@ -1,4 +1,4 @@
-package ru.streamer.file_system.impl;
+package ru.streamer.playlist.impl;
 
 
 import jakarta.annotation.PostConstruct;
@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.streamer.exceptions.ReadFileSystemException;
-import ru.streamer.file_system.PlayListInitialization;
+import ru.streamer.playlist.PlayListInitialization;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package ru.streamer.file_system;
+package ru.streamer.playlist;
 
 import java.util.Map;
 

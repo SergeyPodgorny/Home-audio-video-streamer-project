@@ -1,4 +1,4 @@
-package ru.streamer.file_system;
+package ru.streamer.playlist;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
