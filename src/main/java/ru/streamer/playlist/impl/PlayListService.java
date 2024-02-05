@@ -5,6 +5,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import ru.streamer.annotations.Benchmarked;
 import ru.streamer.exceptions.ReadFileSystemException;
 import ru.streamer.playlist.PlayListInitialization;
 
@@ -29,6 +30,7 @@ public class PlayListService implements PlayListInitialization {
 
     @Override
     @PostConstruct
+    @Benchmarked
     public void init() {
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             playList = stream.filter(file -> !Files.isDirectory(file))

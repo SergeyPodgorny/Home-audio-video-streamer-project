@@ -15,10 +15,8 @@ import java.time.Instant;
 @Slf4j
 public class BenchmarkedAspect {
 
-
-
     @Around("@annotation(ru.streamer.annotations.Benchmarked)")
-    public Object performTImeMeasure(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object performTimeMeasure(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Instant startTime = Instant.now();
 
@@ -26,7 +24,9 @@ public class BenchmarkedAspect {
 
         Instant endTime = Instant.now();
 
-        log.info(Duration.between(endTime,startTime).toString());
+        var playListCreationDuration = String.valueOf(Duration.between(startTime,endTime).toMillis());
+
+        log.info("Created play list in " + playListCreationDuration + " milliseconds");
 
         return proceed;
 
