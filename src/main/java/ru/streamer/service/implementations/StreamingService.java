@@ -1,4 +1,4 @@
-package ru.streamer.service;
+package ru.streamer.service.implementations;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,9 +6,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+import ru.streamer.service.VideoProvider;
 
 @Service
-public class StreamingService implements VideoProvider{
+public class StreamingService implements VideoProvider {
 
     private static final String FORMAT="classpath:videos/%s.mp4";
 
