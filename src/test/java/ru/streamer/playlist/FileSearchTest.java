@@ -23,7 +23,7 @@ public class FileSearchTest {
 
     @Test
     void searchFiles_shouldNotReturnNull() {
-        searcher.getPlayList().entrySet().forEach(System.out::println);
+//        searcher.getPlayList().entrySet().forEach(System.out::println);
         assertThat(searcher.getPlayList()).isNotNull();
     }
 

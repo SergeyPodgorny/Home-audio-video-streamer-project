@@ -29,7 +29,6 @@ public class PlayListService implements PlayListInitialization {
     private Map<String, String> playList;
 
     @Override
-    @PostConstruct
     @Benchmarked
     public void init() {
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
