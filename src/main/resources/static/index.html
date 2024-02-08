@@ -27,6 +27,21 @@
 <!--    </video>-->
 <!--</div>-->
 
+<script>
+
+    async function fetchPlayList() {
+  const response = await fetch("/playlist");
+  const playList = await response.json();
+  console.log(playList);
+}
+
+    const playlist = fetchPlayList();
+
+
+
+
+
+</script>
 
 
 
