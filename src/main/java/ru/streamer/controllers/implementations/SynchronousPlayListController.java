@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.streamer.controllers.PlayListProvider;
+import ru.streamer.dto.PlayListDTO;
 import ru.streamer.playlist.PlayListInitialization;
 
 import java.util.Map;
@@ -22,7 +23,7 @@ public class SynchronousPlayListController implements PlayListProvider {
 
     @GetMapping("/playlist")
     @Override
-    public Map<String, String> getPlayList() {
-        return service.getPlayList();
+    public PlayListDTO getPlayList() {
+        return new PlayListDTO(service.getPlayList());
     }
 }
