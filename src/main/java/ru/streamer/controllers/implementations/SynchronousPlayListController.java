@@ -7,7 +7,6 @@ import ru.streamer.controllers.PlayListProvider;
 import ru.streamer.dto.PlayListDTO;
 import ru.streamer.playlist.PlayListInitialization;
 
-import java.util.Map;
 
 @RestController
 public class SynchronousPlayListController implements PlayListProvider {
@@ -21,7 +20,7 @@ public class SynchronousPlayListController implements PlayListProvider {
     }
 
 
-    @GetMapping("/playlist")
+    @GetMapping(value= "/playlist", produces="application/json")
     @Override
     public PlayListDTO getPlayList() {
         return new PlayListDTO(service.getPlayList());
