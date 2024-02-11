@@ -1,11 +1,11 @@
 package ru.streamer.controllers;
 
-import ru.streamer.dto.PlayListDTO;
+import java.util.Map;
 
 
 public interface PlayListProvider {
 
-    PlayListDTO getPlayList();
+    Map<String,String> getPlayList();
 
 
 }
