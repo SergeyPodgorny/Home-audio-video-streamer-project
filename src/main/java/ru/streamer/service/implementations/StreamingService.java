@@ -11,7 +11,7 @@ import ru.streamer.service.VideoProvider;
 @Service
 public class StreamingService implements VideoProvider {
 
-    private static final String FORMAT="classpath:videos/%s.mp4";
+    private static final String FORMAT="classpath:video/%s";
 
     private final ResourceLoader resourceLoader;
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,14 +19,9 @@
 </head>
 <body>
 
-<h1>Доступные файлы в текущем каталоге</h1>
+<h1>Каталог</h1>
 
-<a href="streamer_page.html">Player</a>
-
-    <br />
-    <br />
-
-    <div id="container"></div>
+<div id="container"></div>
 
 <script>
 
@@ -53,6 +48,8 @@ async function getPlaylist() {
 }
 
 
+
+
 getPlaylist().then(data => {
 
   let table = '<table style="border-collapse: collapse;">';
@@ -69,7 +66,7 @@ getPlaylist().then(data => {
   Object.keys(data).forEach(data => {
     table += `
       <tr>
-        <td><a href=${data}>${data}</td>
+        <td><a href="streamer_page.html">${data}</td>
       </tr>`;
   });
 

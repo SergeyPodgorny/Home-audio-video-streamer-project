@@ -1,36 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
-    <title>Home theatre</title>
+    <meta lang="ru">
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <title>Home movie theatre</title>
 </head>
 <body>
 
+    <a href="index.html">Назад</a>
+    <br>
+    <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="auto"
+    height="auto"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="video/javatechie.mp4" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
 
-<a href="index.html">Back</a>
-
-
-<div class="container mt-5">
-    <h2>Video streaming</h2>
-    <video src="video/javatechie" width="720px" height="480px" controls preload="none">
-    </video>
-</div>
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js">
+    window.HELP_IMPROVE_VIDEOJS = false;
+  </script>
 
 
 </body>
