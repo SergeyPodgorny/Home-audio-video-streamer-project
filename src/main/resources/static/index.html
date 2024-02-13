@@ -22,7 +22,7 @@
 <h1>Каталог</h1>
 
 <div id="container">
-  <video src="video/javatechie.mp4"></video>
+  <video src="/home/sergey/work/spring/Home-audio-video-streamer/target/classes/video/javatechie.mp4"></video>
 </div>
 
 
@@ -30,48 +30,49 @@
 
 <script>
 
-// async function getPlaylist() {
-//   try {
-//     const response = await fetch(
-//       '/playlist',
-//       {
-//         method: 'GET',
-//       },
-//     );
+async function getPlaylist() {
+  try {
+    const response = await fetch(
+      '/playlist',
+      {
+        method: 'GET',
+      },
+    );
 
-//     if (!response.ok) {
-//       throw new Error(`Error! status: ${response.status}`);
-//     }
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
 
-//     const data = await response.json();
-//     console.log(Object.values(data));
-//     console.log(data.javatechie.mp4);
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-
-
-
-// getPlaylist().then(data => {
-
-//   let render = '<div class = "video">';
-
-
-//   Object.values(data).forEach(data=>{
-//     render+= '<video src =${data}></video></div>'
-//   })
+    const data = await response.json();
+    console.log(Object.values(data));
+    console.log(Object.keys(data));
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 
 
-//   const container = document.getElementById('container');
-//   container.innerHTML = render;
+getPlaylist().then(data => {
+
+  // let render = '<div class = "video">';
+
+
+  // Object.values(data).forEach(data=>{
+  //   render+= '<video src =${data}></video></div>'
+  // })
+
+
+
+
+  // const container = document.getElementById('container');
+  // container.innerHTML = render;
 
   
-// });
+});
 
 
 // let table = '<table style="border-collapse: collapse;">';
