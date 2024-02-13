@@ -31,6 +31,7 @@ public class PlayListService implements PlayListInitialization {
     @Override
     @Benchmarked
     public void init() {
+        log.info(System.getProperty("Current home directory user.dir"));
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             playList = stream.filter(file -> !Files.isDirectory(file))
                     .map(Path::toFile)

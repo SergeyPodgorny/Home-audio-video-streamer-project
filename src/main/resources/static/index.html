@@ -21,62 +21,80 @@
 
 <h1>Каталог</h1>
 
-<div id="container"></div>
+<div id="container">
+  <video src="video/javatechie.mp4"></video>
+</div>
+
+
+
 
 <script>
 
-async function getPlaylist() {
-  try {
-    const response = await fetch(
-      '/playlist',
-      {
-        method: 'GET',
-      },
-    );
+// async function getPlaylist() {
+//   try {
+//     const response = await fetch(
+//       '/playlist',
+//       {
+//         method: 'GET',
+//       },
+//     );
 
-    if (!response.ok) {
-      throw new Error(`Error! status: ${response.status}`);
-    }
+//     if (!response.ok) {
+//       throw new Error(`Error! status: ${response.status}`);
+//     }
 
-    const data = await response.json();
-    console.log(Object.values(data));
-    console.log(data.a76cecea7dd217fbbd7f049319a568e531e266);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
+//     const data = await response.json();
+//     console.log(Object.values(data));
+//     console.log(data.javatechie.mp4);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 
-getPlaylist().then(data => {
 
-  let table = '<table style="border-collapse: collapse;">';
 
-  table += `
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
+// getPlaylist().then(data => {
 
-    <tbody>`;
+//   let render = '<div class = "video">';
+
+
+//   Object.values(data).forEach(data=>{
+//     render+= '<video src =${data}></video></div>'
+//   })
+
+
+
+
+//   const container = document.getElementById('container');
+//   container.innerHTML = render;
+
   
-  Object.keys(data).forEach(data => {
-    table += `
-      <tr>
-        <td><a href="streamer_page.html">${data}</td>
-      </tr>`;
-  });
+// });
 
-  table += `
-    </tbody>
-  </table>`;
 
-  const container = document.getElementById('container');
-  container.innerHTML = table;
-});
+// let table = '<table style="border-collapse: collapse;">';
+
+// table += `
+//   <thead>
+//     <tr>
+//       <th>Name</th>
+//     </tr>
+//   </thead>
+
+//   <tbody>`;
+
+// Object.keys(data).forEach(data => {
+//   table += `
+//     <tr>
+//       <td>${data}</td>
+//     </tr>`;
+// });
+
+// table += `
+//   </tbody>
+// </table>`;
 
 </script>
 </body>
