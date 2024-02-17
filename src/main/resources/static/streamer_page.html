@@ -12,7 +12,19 @@
 
     <a href="index.html">Назад</a>
     <br>
-    <video
+    <div id="video-container"></div>
+
+  <script>
+
+
+
+
+  function renderVideoContainer() {
+
+    const currentFileName = localStorage.getItem("currentFileName");
+    console.log(currentFileName);
+
+    let videoContainer = `<video
     id="my-video"
     class="video-js"
     controls
@@ -20,21 +32,32 @@
     width="auto"
     height="auto"
     data-setup="{}"
-  >
-    <source src="/home/sergey/work/spring/Home-audio-video-streamer/target/classes/video/javatechie.mp4" />
-    <p class="vjs-no-js">
+  >`;
+
+    videoContainer+= `<source src=`+'video/'+currentFileName+`/>`;
+    videoContainer+=`    <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a
       web browser that
       <a href="https://videojs.com/html5-video-support/" target="_blank"
         >supports HTML5 video</a
       >
     </p>
-  </video>
+  </video>`;
+
+  const container = document.getElementById('video-container');
+  container.innerHTML = videoContainer;
+
+  };
+
+  renderVideoContainer();
+
+  </script>
+
+
 
   <script src="https://vjs.zencdn.net/8.10.0/video.min.js">
     window.HELP_IMPROVE_VIDEOJS = false;
   </script>
-  <video id = container src="video/javatechie.mp4"></video>
-
+  
 </body>
 </html>

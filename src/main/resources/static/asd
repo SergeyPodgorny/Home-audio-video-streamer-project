@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Reactive Spring Video streaming</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Video streaming</h2>
+    <video src="video/javatechie.mp4" width="720px" height="480px" controls preload="none">
+    </video>
+</div>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+
+
+
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta lang="ru">
+    <title>Home movie theatre</title>
+    <style>
+      body {
+        margin: 100px;
+      }
+
+      table td,
+      table th {
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+
+<h1>Каталог</h1>
+
+<div id="container"></div>
+
+
+
+
+<script>
+async function getPlaylist() {
+  try {
+    const response = await fetch(
+      '/playlist',
+      {
+        method: 'GET',
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    // console.log(Object.values(data));
+    // console.log(Object.keys(data));
+    // console.log(data)
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getPlaylist().then(data => {
+
+
+  let table = '<table style="border-collapse: collapse;">';
+
+table += `
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>`;
+
+Object.keys(data).forEach(data => {
+  table += `
+    <tr>
+      <td><a id = "clicked" href ="streamer_page.html">${data}</a></td>
+    </tr>`;
+});
+
+table += `
+  </tbody>
+</table>`;
+
+  const container = document.getElementById('container');
+  container.innerHTML = table;
+
+  const clicked = document.getElementById('clicked').textContent;
+  localStorage.clear();
+  localStorage.setItem("currentFileName",clicked);
+    
+});
+
+</script>
+</body>
+</html>

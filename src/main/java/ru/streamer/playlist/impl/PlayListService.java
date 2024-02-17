@@ -40,7 +40,7 @@ public class PlayListService implements PlayListInitialization {
                     .collect(Collectors.toMap(
                             File::getName,
                             File::getAbsolutePath,
-                            (s1,s2)-> s1+","+s2));
+                            (s1,s2)-> s1));
         } catch (IOException e) {
             throw new ReadFileSystemException(e);
         }

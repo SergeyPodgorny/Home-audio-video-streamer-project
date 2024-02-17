@@ -2,6 +2,7 @@ package ru.streamer.controllers.implementations;
 
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import ru.streamer.controllers.VideoWebProvider;
 import ru.streamer.service.VideoProvider;
 
 @RestController
+@Slf4j
 public class VideoWebProviderController implements VideoWebProvider {
 
 
@@ -24,9 +26,11 @@ public class VideoWebProviderController implements VideoWebProvider {
     }
 
 
-    @Override
     @GetMapping(value = "video/{title}", produces = "video/mp4")
     public Mono<Resource> streamVideo(@PathVariable String title, @RequestHeader("Range") String range) {
+        log.info(title);
         return videoService.getVideo(title);
     }
+
+
 }
