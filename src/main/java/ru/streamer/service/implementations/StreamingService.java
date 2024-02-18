@@ -16,7 +16,7 @@ public class StreamingService implements VideoProvider {
 
     private final PlayListInitialization playList;
     private final ResourceLoader resourceLoader;
-    private final static String routeFormat ="file:///%s";
+    private final static String routeFormat ="file:/%s";
 
 
     @Autowired
@@ -27,9 +27,7 @@ public class StreamingService implements VideoProvider {
 
 
     public Mono<Resource> getVideo(String title){
-
         var currentRoute = String.format(routeFormat,playList.getPlayList().get(title));
-
         return Mono.fromSupplier(()-> resourceLoader.getResource(currentRoute));
     }
 

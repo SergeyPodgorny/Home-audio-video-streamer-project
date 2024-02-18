@@ -27,6 +27,130 @@
 </body>
 </html>
 
+<head>
+  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <!-- <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> -->
+</head>
+
+<body>
+  <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="video/javatechie.mp4" type="video/mp4" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
+
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+</body>
+
+
+
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta lang="ru">
+    <title>Home movie theatre</title>
+    <style>
+      body {
+        margin: 100px;
+      }
+
+      table td,
+      table th {
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+
+<h1>Каталог</h1>
+
+<div id="container"></div>
+
+
+
+
+<script>
+async function getPlaylist() {
+  try {
+    const response = await fetch(
+      '/playlist',
+      {
+        method: 'GET',
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    // console.log(Object.values(data));
+    // console.log(Object.keys(data));
+    // console.log(data)
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getPlaylist().then(data => {
+
+
+  let table = '<table style="border-collapse: collapse;">';
+
+table += `
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>`;
+
+Object.keys(data).forEach(data => {
+  table += `
+    <tr>
+      <td><a id = "clicked" href ="streamer_page.html">${data}</a></td>
+    </tr>`;
+});
+
+table += `
+  </tbody>
+</table>`;
+
+  const container = document.getElementById('container');
+  container.innerHTML = table;
+
+  const clicked = document.getElementById('clicked').textContent;
+  localStorage.clear();
+  localStorage.setItem("currentFileName",clicked);
+    
+});
+
+</script>
+</body>
+</html>
+
+
 
 
 <!doctype html>
