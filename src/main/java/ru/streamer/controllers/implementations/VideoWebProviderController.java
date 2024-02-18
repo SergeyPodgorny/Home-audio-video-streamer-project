@@ -14,7 +14,6 @@ import ru.streamer.controllers.VideoWebProvider;
 import ru.streamer.service.VideoProvider;
 
 @RestController
-@Slf4j
 public class VideoWebProviderController implements VideoWebProvider {
 
 
@@ -28,9 +27,7 @@ public class VideoWebProviderController implements VideoWebProvider {
 
     @GetMapping(value = "video/{title}", produces = "video/mp4")
     public Mono<Resource> streamVideo(@PathVariable String title, @RequestHeader("Range") String range) {
-        log.info(title);
         return videoService.getVideo(title);
     }
-
 
 }
