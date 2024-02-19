@@ -17,8 +17,26 @@ public class FileExtensionPredicates {
 
     }
 
+    public static boolean mkvTest(Path path) {
+        var extension = FilenameUtils.getExtension(String.valueOf(path.getFileName()));
+        if(extension.equalsIgnoreCase("mkv")){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 
+    public static boolean aviTest(Path path) {
+        var extension = FilenameUtils.getExtension(String.valueOf(path.getFileName()));
+        if(extension.equalsIgnoreCase("avi")){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 
 }
