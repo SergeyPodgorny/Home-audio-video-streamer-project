@@ -34,9 +34,7 @@ public class PlayListService implements PlayListInitialization {
         log.info("Current home directory "+System.getProperty("user.dir"));
         try(Stream<Path> stream = Files.walk(Paths.get(CURRENT_DIRECTORY), Integer.MAX_VALUE)){
             playList = stream.filter(file -> !Files.isDirectory(file))
-                    .filter(path -> FileExtensionPredicates.mp4Test(path)
-                            || FileExtensionPredicates.mkvTest(path)
-                            || FileExtensionPredicates.aviTest(path))
+                    .filter(path -> FileExtensionPredicates.mp4Test(path))
                     .map(Path::toFile)
                     .collect(Collectors.toMap(
                             File::getName,
